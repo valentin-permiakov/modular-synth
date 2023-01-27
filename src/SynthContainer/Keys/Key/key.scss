@@ -1,22 +1,60 @@
-.whiteKey {
+@use '../../../styles/variables' as vars;
+
+%key {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: end;
+  padding: 10px 0;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  user-select: none;
+}
+.whiteKey {
+  @extend %key;
   width: 68px;
   height: 280px;
-  background-color: #fff;
+
+  border-left: 1px solid hsl(0, 0%, 73%);
+  border-bottom: 1px solid hsl(0, 0%, 73%);
   border-radius: 0 0 5px 5px;
-  border: solid #000 2px;
+  box-shadow: -1px 0 0 vars.$white-80 inset, 0 0 5px hsl(0, 0%, 80%) inset,
+    0 0 3px vars.$black-20;
+  background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
+  color: vars.$black-30;
+
+  &.pressed {
+    border-top: 1px solid hsl(0, 0%, 47%);
+    border-left: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid hsl(0, 0%, 60%);
+    box-shadow: 2px 0 3px vars.$black-10 inset,
+      -5px 5px 20px vars.$black-20 inset, 0 0 3px vars.$black-20;
+    background: linear-gradient(to bottom, white 0%, hsl(0, 0%, 91%) 100%);
+    outline: none;
+  }
 }
 
 .blackKey {
+  @extend %key;
   position: absolute;
-  top: -279px;
+  top: -280px;
   width: 38px;
   height: 160px;
-  border-radius: 0 0 5px 5px;
-  background-color: #000;
-  color: white;
+
+  box-shadow: -1px -1px 2px vars.$white-20 inset,
+    0 -5px 2px 3px vars.$black-60 inset, 0 2px 4px vars.$black-50;
+  background: linear-gradient(45deg, hsl(0, 0%, 13%) 0%, hsl(0, 0%, 33%) 100%);
+  color: vars.$white-50;
+
+  &.pressed {
+    box-shadow: -1px -1px 2px vars.$white-20 inset,
+      0 -2px 2px 3px vars.$black-60 inset, 0 1px 2px vars.$black-50;
+    background: linear-gradient(
+      to right,
+      hsl(0, 0%, 27%) 0%,
+      hsl(0, 0%, 13%) 100%
+    );
+    outline: none;
+  }
 
   &:nth-child(1) {
     left: 48px;
@@ -56,5 +94,13 @@
 
   &:nth-child(10) {
     left: 865px;
+  }
+
+  &:nth-child(11) {
+    left: 1002px;
+  }
+
+  &:nth-child(12) {
+    left: 1070px;
   }
 }

@@ -9,10 +9,10 @@ export function Keys() {
       <div className={styles.whiteKeys}>
         {WHITE_KEYS.map((key) => (
           <Key
-            keyCode={key.keyCode}
+            keyCode={key.code}
             keyName={key.keyName}
             note={key.note}
-            key={key.keyCode}
+            key={key.code}
             isBlack={false}
           />
         ))}
@@ -20,10 +20,10 @@ export function Keys() {
       <div className={styles.blackKeys}>
         {BLACK_KEYS.map((key) => (
           <Key
-            keyCode={key.keyCode}
+            keyCode={key.code}
             keyName={key.keyName}
             note={key.note}
-            key={key.keyCode}
+            key={key.code}
             isBlack={true}
           />
         ))}

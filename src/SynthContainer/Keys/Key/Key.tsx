@@ -1,83 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './key.scss';
-import { context, pressedNotes } from '../../../globalConst';
+import { pressedNotes } from '../../../globalConst';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/store';
+import { playNote } from '../../../utils/playNote';
+import { stopPlay } from '../../../utils/stopPlay';
 
 interface IKeyProps {
   keyName: string;
-  keyCode: number;
+  keyCode: string;
   note: number;
   isBlack: boolean;
 }
 
 export function Key({ keyName, keyCode, note, isBlack }: IKeyProps) {
-  const playNote = () => {
-    const oscillator = context.createOscillator();
-    const noteGainNode = context.createGain();
-    noteGainNode.connect(context.destination);
+  const [isPressed, setIsPressed] = useState(false);
+  const controls = useSelector((state: RootState) => state.synthControls);
 
-    const zeroGain = 0.00001;
-    const maxGain = 0.5;
-    const sustainedGain = 0.001;
-
-    noteGainNode.gain.value = zeroGain;
-
-    const setAttack = () =>
-      noteGainNode.gain.exponentialRampToValueAtTime(
-        maxGain,
-        context.currentTime + 0.01
-      );
-    const setDecay = () =>
-      noteGainNode.gain.exponentialRampToValueAtTime(
-        sustainedGain,
-        context.currentTime + 1
-      );
-    const setRelease = () =>
-      noteGainNode.gain.exponentialRampToValueAtTime(
-        zeroGain,
-        context.currentTime + 2
-      );
-
-    setAttack();
-    setDecay();
-    setRelease();
-
-    oscillator.type = 'triangle';
-    oscillator.connect(noteGainNode);
-    oscillator.frequency.setValueAtTime(note, 0);
-
-    pressedNotes.set(keyName, oscillator);
-    pressedNotes.get(keyName)?.start(0);
-  };
-
-  const stopPlay = () => {
-    const oscillator = pressedNotes.get(keyName);
-    if (oscillator) {
-      setTimeout(() => {
-        oscillator.stop(0);
-      }, 2000);
-      pressedNotes.delete(keyName);
-    }
-  };
-
-  const handleKeyDown = (e: { keyCode: number; key: string }) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     const eventKey = e.key.toUpperCase();
 
     if (!eventKey || pressedNotes.get(eventKey)) return;
-    if (e.keyCode === keyCode) playNote();
+    if (e.code === keyCode) playNote(keyName, note, controls, setIsPressed);
   };
-  const handleKeyUp = (e: { keyCode: number }) => {
-    if (!e.keyCode) return;
-    if (e.keyCode === keyCode) stopPlay();
+  const handleKeyUp = (e: KeyboardEvent) => {
+    if (!e.code) return;
+    if (e.code === keyCode) stopPlay(keyName, setIsPressed);
   };
 
-  document.addEventListener('keydown', handleKeyDown);
-  document.addEventListener('keyup', handleKeyUp);
+  document.addEventListener('keydown', (e) => {
+    handleKeyDown(e);
+    if (e.code === keyCode) setIsPressed(true);
+  });
+  document.addEventListener('keyup', (e) => {
+    handleKeyUp(e);
+    setIsPressed(false);
+  });
 
   return (
     <div
-      onMouseDown={playNote}
-      onMouseUp={stopPlay}
-      className={isBlack ? styles.blackKey : styles.whiteKey}
+      onMouseDown={() => playNote(keyName, note, controls, setIsPressed)}
+      onMouseUp={() => stopPlay(keyName, setIsPressed)}
+      className={`${isBlack ? styles.blackKey : styles.whiteKey} ${
+        isPressed ? styles.pressed : ''
+      }`}
     >
       {keyName}
     </div>
