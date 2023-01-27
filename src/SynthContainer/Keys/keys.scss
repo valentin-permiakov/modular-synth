@@ -1,0 +1,12 @@
+.keysContainer {
+  position: relative;
+
+  .whiteKeys {
+    display: flex;
+  }
+
+  .blackKeys {
+    position: relative;
+    display: flex;
+  }
+}

@@ -1,0 +1,8 @@
+@use '../styles/variables' as vars;
+
+.container {
+  height: 290px;
+  padding: 90px 30px 0 30px;
+  background-color: vars.$synthBg;
+  border-radius: 5px;
+}
