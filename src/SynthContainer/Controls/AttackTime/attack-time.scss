@@ -1,0 +1,57 @@
+%knobConent {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+%knobSize {
+  width: 70px;
+  height: 70px;
+}
+
+.knobContainer {
+  @extend %knobSize;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  padding: 50px;
+  box-sizing: content-box;
+  transform: rotate(17deg);
+
+  &::before {
+    @extend %knobConent;
+    @extend %knobSize;
+    background: linear-gradient(0deg, #46425c 0%, #1b1225 0%);
+    border-radius: 50%;
+    box-shadow: 0 -20px 20px #757575, 0px 20px 35px #111,
+      inset 0px 5px 6px #4d4d4d, inset 0px -5px 6px #242424;
+  }
+}
+
+.knob {
+  @extend %knobSize;
+  position: relative;
+  transform: rotate(230deg);
+
+  &::before {
+    @extend %knobConent;
+    top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px white;
+  }
+
+  &::after {
+    @extend %knobConent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid white;
+    width: 105%;
+    height: 105%;
+    box-shadow: 0 0 10px white, inset 0 0 10px white;
+  }
+}

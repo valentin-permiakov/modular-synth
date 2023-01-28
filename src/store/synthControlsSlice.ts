@@ -14,10 +14,10 @@ export const initialState: IControlsInitialState = {
   masterVolume: 0.0001,
   oscillatorType: 'sine',
   attackGain: 2,
-  attackTime: 0.2,
+  attackTime: 0.1,
   decayTime: 0.1,
   decayVolume: 0.5,
-  releaseLength: 1,
+  releaseLength: 3,
 };
 
 export const synthControlsSlice = createSlice({

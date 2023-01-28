@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './key.scss';
 import { pressedNotes } from '../../../globalConst';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
+import { RootState, store } from '../../../store/store';
 import { playNote } from '../../../utils/playNote';
 import { stopPlay } from '../../../utils/stopPlay';
 
@@ -13,15 +13,17 @@ interface IKeyProps {
   isBlack: boolean;
 }
 
-export function Key({ keyName, keyCode, note, isBlack }: IKeyProps) {
+export const Key = ({ keyName, keyCode, note, isBlack }: IKeyProps) => {
   const [isPressed, setIsPressed] = useState(false);
   const controls = useSelector((state: RootState) => state.synthControls);
 
   const handleKeyDown = (e: KeyboardEvent) => {
     const eventKey = e.key.toUpperCase();
+    const synthControls = store.getState().synthControls;
 
     if (!eventKey || pressedNotes.get(eventKey)) return;
-    if (e.code === keyCode) playNote(keyName, note, controls, setIsPressed);
+    if (e.code === keyCode)
+      playNote(keyName, note, synthControls, setIsPressed);
   };
   const handleKeyUp = (e: KeyboardEvent) => {
     if (!e.code) return;
@@ -48,4 +50,4 @@ export function Key({ keyName, keyCode, note, isBlack }: IKeyProps) {
       {keyName}
     </div>
   );
-}
+};
