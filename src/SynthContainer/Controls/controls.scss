@@ -1,0 +1,29 @@
+.controlsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 150px;
+  user-select: none;
+}
+
+.knobContainer {
+  display: flex;
+}
+
+.controlGroup {
+  display: flex;
+  position: relative;
+  padding: 4px;
+  margin-right: 25px;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px white, inset 0 0 5px white;
+}
+
+.groupName {
+  color: white;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 0 0 2px white, 0 0 5px white;
+}

@@ -49,7 +49,6 @@
 // }
 
 * {
-  color: var(--mainText);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,7 +58,7 @@ body {
   padding: 0;
   padding-top: 30px;
   margin: 0;
-  background-color: var(--backgroundColor);
+  background-color: #333;
   font-size: 14px;
   line-height: 16px;
   font-family: 'SF-UI-display', 'Roboto', sans-serif;

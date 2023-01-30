@@ -1,0 +1,31 @@
+@use '../../../styles/mixins';
+
+.choiceBox {
+  justify-self: flex-end;
+}
+
+.rangeBtn {
+  @include mixins.btnReset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 370px;
+  padding: 19px 15px;
+  background: linear-gradient(90deg, hsl(0, 0%, 3%) 0%, hsl(0, 0%, 13%) 70%);
+  color: white;
+  font-size: 16px;
+  line-height: 17px;
+  svg {
+    stroke: white;
+  }
+
+  &:hover {
+    text-shadow: 0 0 2px white, 0 0 2px white;
+  }
+}
+
+.reversed {
+  span {
+    transform: rotate(180deg) translateY(-2px);
+  }
+}

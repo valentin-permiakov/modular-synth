@@ -13,11 +13,11 @@ export interface IControlsInitialState {
 export const initialState: IControlsInitialState = {
   masterVolume: 0.0001,
   oscillatorType: 'sine',
-  attackGain: 2,
+  attackGain: 0.1,
   attackTime: 0.1,
   decayTime: 0.1,
-  decayVolume: 0.5,
-  releaseLength: 3,
+  decayVolume: 0.1,
+  releaseLength: 0.5,
 };
 
 export const synthControlsSlice = createSlice({
