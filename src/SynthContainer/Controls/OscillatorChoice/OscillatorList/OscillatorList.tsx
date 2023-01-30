@@ -1,4 +1,5 @@
 import React, { MouseEvent } from 'react';
+import { EIcons, Icon } from '../../../../icons';
 import styles from './oscillator-list.scss';
 
 interface IOscillatorList {
@@ -13,24 +14,28 @@ export const OscillatorList = ({
   return (
     <ul className={styles.rangeList} onMouseLeave={handleHover}>
       <li className={styles.rangeItem} data-type="sine" onClick={handleClick}>
-        Sine
+        <span>Sine</span>
+        <Icon name={EIcons.sineIcon} size={32} />
       </li>
       <li
         className={styles.rangeItem}
         data-type="sawtooth"
         onClick={handleClick}
       >
-        Sawtooth
+        <span>Sawtooth</span>
+        <Icon name={EIcons.sawtoothIcon} size={32} />
       </li>
       <li className={styles.rangeItem} data-type="square" onClick={handleClick}>
-        Square
+        <span>Square</span>
+        <Icon name={EIcons.squareIcon} size={32} />
       </li>
       <li
         className={styles.rangeItem}
         data-type="triangle"
         onClick={handleClick}
       >
-        Triangle
+        <span>Triangle</span>
+        <Icon name={EIcons.triangleIcon} size={32} />
       </li>
     </ul>
   );

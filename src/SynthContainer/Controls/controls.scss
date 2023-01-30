@@ -1,7 +1,7 @@
 .controlsContainer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 150px;
+  margin-bottom: 125px;
   user-select: none;
 }
 
@@ -12,7 +12,8 @@
 .controlGroup {
   display: flex;
   position: relative;
-  padding: 4px;
+  padding: 10px;
+  padding-bottom: 20px;
   margin-right: 25px;
   border: 1px solid white;
   border-radius: 5px;
@@ -22,8 +23,10 @@
 .groupName {
   color: white;
   position: absolute;
-  bottom: -25px;
+  bottom: -35px;
   left: 50%;
   transform: translateX(-50%);
-  text-shadow: 0 0 2px white, 0 0 5px white;
+  text-shadow: 0 0 2px white, 0 0 2px white;
+  font-size: 16px;
+  text-transform: uppercase;
 }

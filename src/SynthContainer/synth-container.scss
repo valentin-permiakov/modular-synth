@@ -3,7 +3,7 @@
 .container {
   height: 600px;
   padding: 50px 30px 0 30px;
-  background-color: vars.$synthBg;
+  background: linear-gradient(90deg, vars.$synthBg 0, #3d1a45 100%);
   border-radius: 5px;
   box-shadow: 7px 7px 25px vars.$shadowColor;
 }

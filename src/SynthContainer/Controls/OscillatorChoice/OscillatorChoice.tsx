@@ -46,7 +46,7 @@ export const OscillatorChoice = () => {
         onClick={() => setIsOpened(!isOpened)}
         ref={btnRef}
       >
-        {oscillatorType.toUpperCase()}
+        {oscillatorType}
         <Icon name={EIcons.dropdownIcon} />
       </button>
       {isOpened && (

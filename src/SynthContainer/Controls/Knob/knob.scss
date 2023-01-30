@@ -45,12 +45,12 @@
 
   &::before {
     @extend %knobConent;
-    top: 7px;
+    top: 6px;
     left: 50%;
     z-index: 2;
     transform: translateX(-50%);
-    width: 4px;
-    height: 20px;
+    width: 3px;
+    height: 22px;
     background-color: white;
     box-shadow: 0 0 10px white;
   }
@@ -63,18 +63,19 @@
     width: 105%;
     height: 105%;
     background: linear-gradient(90deg, hsl(0, 0%, 3%) 0%, hsl(0, 0%, 13%) 70%);
-    border: 3px solid white;
+    border: 2px solid white;
     box-shadow: 0 0 10px white, inset 0 0 5px white;
   }
 }
 
 .controlName {
+  margin-top: 5px;
   color: vars.$white-80;
 }
 
 .result {
   position: absolute;
-  bottom: 35px;
+  bottom: 39px;
   left: 50%;
   transform: translateX(-50%);
   color: vars.$white-80;
