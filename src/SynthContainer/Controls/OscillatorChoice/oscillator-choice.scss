@@ -2,6 +2,9 @@
 
 .choiceBox {
   justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .rangeBtn {
@@ -9,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 370px;
+  width: 190px;
   padding: 19px 15px;
   background: linear-gradient(90deg, hsl(0, 0%, 3%) 0%, hsl(0, 0%, 13%) 70%);
   color: white;
@@ -29,4 +32,13 @@
   span {
     transform: rotate(180deg) translateY(-2px);
   }
+}
+
+.groupName {
+  margin-bottom: 10px;
+  text-shadow: 0 0 2px white, 0 0 2px white;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: white;
 }

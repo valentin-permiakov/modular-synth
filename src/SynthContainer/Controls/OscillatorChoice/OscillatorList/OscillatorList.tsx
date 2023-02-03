@@ -5,11 +5,13 @@ import styles from './oscillator-list.scss';
 interface IOscillatorList {
   handleClick: (e: MouseEvent<HTMLLIElement>) => void;
   handleHover: () => void;
+  isBass?: boolean;
 }
 
 export const OscillatorList = ({
   handleClick,
   handleHover,
+  isBass = false,
 }: IOscillatorList) => {
   return (
     <ul className={styles.rangeList} onMouseLeave={handleHover}>
@@ -37,6 +39,11 @@ export const OscillatorList = ({
         <span>Triangle</span>
         <Icon name={EIcons.triangleIcon} size={32} />
       </li>
+      {isBass && (
+        <li className={styles.rangeItem} data-type="off" onClick={handleClick}>
+          Off
+        </li>
+      )}
     </ul>
   );
 };

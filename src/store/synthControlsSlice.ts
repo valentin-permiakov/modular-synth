@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface IControlsInitialState {
   masterVolume: number;
   oscillatorType: OscillatorType;
+  oscillatorType2?: OscillatorType;
   attackGain: number;
   attackTime: number;
   releaseLength: number;
@@ -13,6 +14,7 @@ export interface IControlsInitialState {
 export const initialState: IControlsInitialState = {
   masterVolume: 0.0001,
   oscillatorType: 'sine',
+  oscillatorType2: undefined,
   attackGain: 0.1,
   attackTime: 0.1,
   decayTime: 0.1,
@@ -24,8 +26,14 @@ export const synthControlsSlice = createSlice({
   name: 'synthControls',
   initialState,
   reducers: {
-    changeOscillatorType: (State, action: PayloadAction<OscillatorType>) => {
-      State.oscillatorType = action.payload;
+    changeOscillatorType: (state, action: PayloadAction<OscillatorType>) => {
+      state.oscillatorType = action.payload;
+    },
+    changeOscillatorType2: (
+      state,
+      action: PayloadAction<OscillatorType | undefined>
+    ) => {
+      state.oscillatorType2 = action.payload;
     },
     changeMasterVolume: (state, action: PayloadAction<number>) => {
       state.masterVolume = action.payload;
@@ -51,6 +59,7 @@ export const synthControlsSlice = createSlice({
 export const {
   changeMasterVolume,
   changeOscillatorType,
+  changeOscillatorType2,
   changeAttackGain,
   changeAttackTime,
   changeDecayTime,

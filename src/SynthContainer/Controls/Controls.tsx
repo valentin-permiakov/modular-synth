@@ -63,7 +63,8 @@ export const Controls = () => {
           <span className={styles.groupName}>Release</span>
         </div>
       </div>
-      <OscillatorChoice />
+      <OscillatorChoice oscillatorType={state.oscillatorType} />
+      <OscillatorChoice isBass oscillatorType={state.oscillatorType2} />
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 .rangeList {
   @include mixins.listReset;
-  width: 370px;
+  width: 190px;
   background: linear-gradient(90deg, hsl(0, 0%, 3%) 0%, hsl(0, 0%, 13%) 70%);
   box-shadow: 0 5px 15px black;
 
@@ -17,6 +17,10 @@
     line-height: 17px;
     text-transform: uppercase;
     cursor: pointer;
+
+    &:last-child {
+      height: 58px;
+    }
 
     &:hover {
       text-shadow: 0 0 2px white, 0 0 2px white;

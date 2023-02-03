@@ -11,6 +11,7 @@ export const playNote = (
   setIsPressed: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const oscillator = context.createOscillator();
+  const osc2 = context.createOscillator();
   const noteGainNode = context.createGain();
   noteGainNode.connect(context.destination);
 
@@ -27,6 +28,14 @@ export const playNote = (
   oscillator.type = controls.oscillatorType;
   oscillator.connect(noteGainNode);
   oscillator.frequency.setValueAtTime(note, 0);
+
+  if (controls.oscillatorType2 !== undefined) {
+    osc2.type = controls.oscillatorType2;
+    osc2.connect(noteGainNode);
+    osc2.frequency.setValueAtTime(note / 2, 0);
+    pressedNotes.set(`${keyName}bass`, osc2);
+    pressedNotes.get(`${keyName}bass`)?.start(0);
+  }
 
   pressedNotes.set(keyName, oscillator);
   pressedNotes.get(keyName)?.start(0);
