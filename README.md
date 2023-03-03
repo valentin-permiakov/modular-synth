@@ -9,6 +9,8 @@ A modular synth built on [TypeScript] and [React]
 - Creates oscillators for each key pressed (can play chords)
 - Has oscillator controls and an optional bass-oscillator
 
+## The app is deployed on [Vercel](https://modular-synth-seven.vercel.app/)
+
 ## Running the project
 
 1. Install all necessary dependancies
